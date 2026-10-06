@@ -5,14 +5,20 @@ public class DailyPower {
     // a) print power prices during a day
     public static void printPowerPrices(double[] prices) {
 
-        // TODO
+        for(double d : prices){
+            System.out.print(d + " NOK ");
+        }
+        System.out.println("");
 
     }
 
     // b) print power usage during a day
     public static void printPowerUsage(double[] usage) {
 
-        // TODO
+        for(double d : usage){
+            System.out.print(d + " kWh ");
+        }
+        System.out.println("");
 
     }
 
@@ -21,7 +27,9 @@ public class DailyPower {
 
         double sum = 0;
 
-        // TODO
+        for(double d : usage){
+            sum += d;
+        }
 
         return sum;
     }
@@ -31,7 +39,9 @@ public class DailyPower {
 
         double price = 0;
 
-        // TODO
+        for(int i = 0; i < usage.length; i++){
+            price += usage[i] * prices[i];
+        }
 
         return price;
     }
@@ -44,7 +54,9 @@ public class DailyPower {
 
         double support = 0;
 
-        // TODO
+        if(price > THRESHOLD){
+            support = usage * (price - THRESHOLD) * PERCENTAGE;
+        }
 
         return support;
     }
@@ -54,7 +66,9 @@ public class DailyPower {
 
         double support = 0;
 
-        // TODO
+        for(int i = 0; i < usage.length; i++){
+            support += getSupport(usage[i], prices[i]);
+        }
 
         return support;
     }
@@ -66,7 +80,9 @@ public class DailyPower {
 
         double price = 0;
 
-        // TODO
+        for(double d : usage){
+            price += d * NORGESPRIS_KWH;
+        }
 
         return price;
     }
@@ -76,7 +92,11 @@ public class DailyPower {
 
         double temp_max = 0;
 
-        // TODO
+        for(double d : usage){
+            if(d > temp_max){
+                temp_max = d;
+            }
+        }
 
         return temp_max;
     }
@@ -85,7 +105,10 @@ public class DailyPower {
 
         double average = 0;
 
-        // TODO
+        for(double d : usage){
+            average += d;
+        }
+        average = average / usage.length;
 
         return average;
     }
