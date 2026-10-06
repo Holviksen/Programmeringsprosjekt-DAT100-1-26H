@@ -34,7 +34,11 @@ public class MonthlyPower {
 
         double sum = 0;
 
-        // TODO
+        for(double[] dd : usage){
+            for(double d : dd){
+                sum+= d;
+            }
+        }
 
         return sum;
     }
@@ -45,7 +49,22 @@ public class MonthlyPower {
         boolean exceeded = false;
         double usage = 0;
 
-        // TODO
+        int i = 0;
+
+        while (i < powerusage.length && usage <= threshold) {
+            int j = 0;
+
+            while (j < powerusage[i].length && usage <= threshold) {
+                usage += powerusage[i][j];
+                j++;
+            }
+
+            i++;
+        }
+
+        if(usage > threshold){
+            exceeded = true;
+        }
 
         return exceeded;
     }
@@ -55,7 +74,11 @@ public class MonthlyPower {
 
         double price = 0;
 
-        // TODO
+        for(int i = 0; i < usage.length; i++){
+            for(int j = 0; j < usage[i].length; j++){
+                price += usage[i][j] * prices[i][j];
+            }
+        }
 
         return price;
     }
@@ -65,7 +88,13 @@ public class MonthlyPower {
 
         double support = 0;
 
-        // TODO
+            for(int i = 0; i < usage.length; i++){
+                for(int j = 0; j < usage[i].length; j++){
+                    if(prices[i][j] > 0.9375){
+                        support += usage[i][j] * (prices[i][j] - 0.9375) * 0.9;
+                    }
+                }
+            }
 
         return support;
     }
@@ -75,7 +104,11 @@ public class MonthlyPower {
 
         double price = 0;
 
-        // TODO
+        for(double[] dd : usage){
+            for(double d : dd){
+                price+= d * 0.5;
+            }
+        }
 
         return price;
     }

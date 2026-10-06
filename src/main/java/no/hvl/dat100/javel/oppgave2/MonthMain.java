@@ -17,6 +17,9 @@ public class MonthMain {
         MonthlyPower.print_PowerUsage(power_usage_month);
         MonthlyPower.print_PowerPrices(power_prices_month);
 
-
+        System.out.println(MonthlyPower.computePowerUsage(power_usage_month));
+        System.out.println(MonthlyPower.computeSpotPrice(power_usage_month, power_prices_month));
+        System.out.println(MonthlyPower.computePowerSupport(power_usage_month, power_prices_month));
+        System.out.println(MonthlyPower.computeNorgesPrice(power_usage_month));
     }
 }
