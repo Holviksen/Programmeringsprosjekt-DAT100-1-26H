@@ -51,15 +51,12 @@ public class Customer {
     @Override
     public String toString(){
 
-        String info = "```" + 
+        return "```" + 
         "\nCustomer number: " + customer_id + 
         "\nName: " + name + 
         "\nEmail: " + email + 
         "\nAgreement: " + agreement + 
         "\n```";
-        
-        return info;
-        
     }
 
 }

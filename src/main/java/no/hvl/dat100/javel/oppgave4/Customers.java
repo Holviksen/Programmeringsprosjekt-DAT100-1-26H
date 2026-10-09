@@ -9,7 +9,7 @@ public class Customers {
     // a) Complete constructor
     public Customers(int size) {
 
-        // TODO
+        customers = new Customer[size];
 
     }
 
@@ -19,7 +19,11 @@ public class Customers {
 
         int count = 0;
 
-        // TODO
+        for(Customer cus : customers){
+            if(cus != null){
+                count++;
+            }
+        }
 
         return count;
     }
@@ -27,10 +31,13 @@ public class Customers {
     // c) return reference to customer with given id (if exists)
     public Customer getCustomer(int customer_id) {
 
-        boolean funnet = false;
         Customer c = null;
 
-        // TODO
+        for(Customer cus : customers){
+            if(cus != null && cus.getID() == customer_id){
+                c = cus;
+            }
+        }
 
         return c;
     }
@@ -38,20 +45,27 @@ public class Customers {
     // d) add a customer to the reference table
     public boolean addCustomer(Customer c) {
 
-        boolean inserted = false;
+        for(int i = 0; i < customers.length; i++){
+            if(customers[i] == null){
+                customers[i] = c;
+                return true;
+            }
+        }
 
-        // TODO
-
-        return inserted;
+        return false;
     }
 
     // e) remove customer with given id from reference table
     public Customer removeCustomer(int customer_id) {
 
-        boolean deleted = false;
         Customer c = null;
 
-        // TODO
+        for(int i = 0; i < customers.length; i++){
+            if(customers[i] != null && customers[i].getID() == customer_id){
+                c = customers[i];
+                customers[i] = null;
+            }
+        }
 
         return c;
     }
@@ -59,10 +73,17 @@ public class Customers {
     // f) return reference table with all customers
     public Customer[] getCustomers() {
 
-        Customer[] customers = null;
+        Customer[] _customers = new Customer[countNonNull()];
+        
+        int i = 0;
 
-        // TODO
+        for(Customer c : customers){
+            if(c != null){
+                _customers[i] = c;
+                i++;
+            }
+        }
 
-        return customers;
+        return _customers;
     }
 }
